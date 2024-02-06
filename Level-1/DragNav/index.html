@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DragNav</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <h1>DragNav</h1>
+      <p>
+        A draggable navigation menu with rotating icons.The navigation bar, 
+        features icons for Home, Profile,
+        Wishlist, Logout, and Settings. The icons smoothly appear and rotate on
+        a toggle click, and the entire navigation bar can be dragged vertically.
+      </p>
+    </header>
+    <nav>
+      <div class="nav-content">
+        <div class="toggle-btn">
+          <i class="bx bx-plus"></i>
+        </div>
+        <span style="--i: 5">
+          <a href="#" title="Home"><i class="bx bxs-home"></i></a>
+        </span>
+        <span style="--i: 4">
+          <a href="#" title="Profile"><i class="bx bxs-user"></i></a>
+        </span>
+        <span style="--i: 3">
+          <a href="#" title="Wishlist"><i class="bx bxs-heart"></i></a>
+        </span>
+        <span style="--i: 2">
+          <a href="#" title="LogOut"><i class="bx bxs-log-out"></i></a>
+        </span>
+        <span style="--i: 1">
+          <a href="#" title="Settings"><i class="bx bxs-cog"></i></a>
+        </span>
+      </div>
+    </nav>
+
+    <script>
+      const nav = document.querySelector("nav"),
+        toggleBtn = nav.querySelector(".toggle-btn");
+
+      toggleBtn.addEventListener("click", () => {
+        nav.classList.toggle("open");
+      });
+
+      function onDrag({ movementY }) {
+        const navStyle = window.getComputedStyle(nav),
+          navTop = parseInt(navStyle.top),
+          navHeight = parseInt(navStyle.height),
+          windHeight = window.innerHeight;
+
+        nav.style.top = navTop > 0 ? `${navTop + movementY}px` : "1px";
+        if (navTop > windHeight - navHeight) {
+          nav.style.top = `${windHeight - navHeight}px`;
+        }
+      }
+
+      nav.addEventListener("mousedown", () => {
+        nav.addEventListener("mousemove", onDrag);
+      });
+
+      nav.addEventListener("mouseup", () => {
+        nav.removeEventListener("mousemove", onDrag);
+      });
+      nav.addEventListener("mouseleave", () => {
+        nav.removeEventListener("mousemove", onDrag);
+      });
+    </script>
+  </body>
+</html>
