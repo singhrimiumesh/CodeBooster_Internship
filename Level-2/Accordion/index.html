@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Accordion Menu</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    </head>
+    <body>
+    
+    <h2>Accordion</h2>
+    
+    <button class="accordion accordion1">What is an accordion in HTML?
+    </button>
+    <div class="panel1">
+      <p>In HTML, an accordion is a user interface component typically composed of collapsible panels stacked vertically. Each panel contains a header and a content section, allowing users to expand or collapse individual panels to reveal or hide their content. This functionality is achieved using HTML for structure, CSS for styling, and JavaScript for interactivity, providing a space-efficient and organized way to present information on webpages.</p>
+    </div>
+    
+    <button class="accordion">What is the use of the accordion?
+    </button>
+    <div class="panel">
+      <p>Accordions are versatile user interface components that efficiently organize content by allowing users to expand or collapse sections as needed, conserving space and providing a structured presentation of information. Commonly used for FAQs, product descriptions, or navigation menus, accordions streamline user interaction by enabling focused access to specific content while minimizing visual clutter on webpages.</p>
+    </div>
+    
+    <button class="accordion accordion1">What is the difference between dropdown and accordion?
+    </button>
+    <div class="panel1">
+      <p>Dropdowns and accordions are user interface elements used in web design, but they serve different purposes. Dropdowns typically present a list of options that appear when triggered, allowing users to select one choice. On the other hand, accordions are vertically stacked panels that can be expanded or collapsed to reveal or hide content sections, often used to organize information efficiently. While dropdowns are ideal for selecting a single option from a list, accordions are useful for displaying multiple sections of content in a compact format.</p>
+    </div>
+    
+    <script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+    
+    for (i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+        if (panel.style.display === "block") {
+          panel.style.display = "none";
+        } else {
+          panel.style.display = "block";
+        }
+      });
+    }
+    </script>
+    
+  </body>
+</html>
